@@ -1,0 +1,29 @@
+.button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-family: 'Rubik';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    &--primary {
+        border: none;
+        color: #fff;
+        background-color: #5A45F2;
+    }
+
+    &--outline-primary {
+        border: 1px solid #5A45F2;
+        color: #000;
+        background-color: transparent;
+    }
+
+    &--dark {
+        border: 1px solid transparent;
+        color: #fff;
+        background-color: #000;
+    }
+}
