@@ -70,20 +70,64 @@ function App() {
       </PricePlan>
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <Dialog.Panel>
-          <Dialog.Title>Deactivate account</Dialog.Title>
-          <Dialog.Description>
-            This will permanently deactivate your account
-          </Dialog.Description>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            background: "rgba(0,0,0,0.5)",
+          }}
+        >
+          <Dialog.Panel
+            style={{
+              padding: "1.5rem",
+              borderRadius: "8px",
+              background: "#fff",
+            }}
+          >
+            <Dialog.Title>Contact</Dialog.Title>
 
-          <p>
-            Are you sure you want to deactivate your account? All of your data
-            will be permanently removed. This action cannot be undone.
-          </p>
+            <form>
+              <input
+                type={"email"}
+                placeholder={"email@gmail.com"}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  padding: "12px",
+                  border: "1px solid #5A45F2",
+                  borderRadius: "0.5rem",
+                }}
+              />
+            </form>
 
-          <button onClick={() => setIsOpen(false)}>Deactivate</button>
-          <button onClick={() => setIsOpen(false)}>Cancel</button>
-        </Dialog.Panel>
+            <p>Once we receive your email we will contact you!</p>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                columnGap: "1rem",
+              }}
+            >
+              <Button
+                variant="outline-primary"
+                onClick={() => setIsOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={() => setIsOpen(false)}>
+                Send
+              </Button>
+            </div>
+          </Dialog.Panel>
+        </div>
       </Dialog>
     </div>
   );
