@@ -3,12 +3,12 @@ import classNames from "classnames";
 
 import styles from "./Button.module.scss";
 
-export interface ButtonProps {
+export type ButtonProps = {
   children: React.ReactNode;
   variant?: "primary" | "outline-primary" | "dark";
-}
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export function Button({ children, variant }: ButtonProps) {
+export function Button({ children, variant, ...props }: ButtonProps) {
   return (
     <button
       type="button"
@@ -16,6 +16,7 @@ export function Button({ children, variant }: ButtonProps) {
         styles.button,
         variant && styles[`button--${variant}`]
       )}
+      {...props}
     >
       {children}
     </button>

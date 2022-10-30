@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { Dialog } from "@headlessui/react";
+
 import useFeature from "./hooks/useFeatures";
 
 import starterPlanIcon from "./assets/starter-plan.png";
@@ -16,6 +19,8 @@ import "./App.scss";
 function App() {
   const { starterFeatures, proFeatures, teamsFeatures } = useFeature();
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="price-plans">
       <PricePlan>
@@ -24,7 +29,9 @@ function App() {
         <PriceAmount>Free</PriceAmount>
         <PriceTime>per month</PriceTime>
         <PriceFeatures items={starterFeatures} />
-        <Button variant="outline-primary">Get Started</Button>
+        <Button variant="outline-primary" onClick={() => setIsOpen(true)}>
+          Get Started
+        </Button>
       </PricePlan>
 
       <PricePlan
@@ -46,7 +53,9 @@ function App() {
           per year
         </PriceTime>
         <PriceFeatures items={proFeatures} />
-        <Button variant="dark">Become a Pro</Button>
+        <Button variant="dark" onClick={() => setIsOpen(true)}>
+          Become a Pro
+        </Button>
       </PricePlan>
 
       <PricePlan style={{ padding: "40px" }}>
@@ -55,8 +64,27 @@ function App() {
         <PriceAmount>$99</PriceAmount>
         <PriceTime>per month</PriceTime>
         <PriceFeatures items={teamsFeatures} />
-        <Button variant="primary">Get Teams</Button>
+        <Button variant="primary" onClick={() => setIsOpen(true)}>
+          Get Teams
+        </Button>
       </PricePlan>
+
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+        <Dialog.Panel>
+          <Dialog.Title>Deactivate account</Dialog.Title>
+          <Dialog.Description>
+            This will permanently deactivate your account
+          </Dialog.Description>
+
+          <p>
+            Are you sure you want to deactivate your account? All of your data
+            will be permanently removed. This action cannot be undone.
+          </p>
+
+          <button onClick={() => setIsOpen(false)}>Deactivate</button>
+          <button onClick={() => setIsOpen(false)}>Cancel</button>
+        </Dialog.Panel>
+      </Dialog>
     </div>
   );
 }
